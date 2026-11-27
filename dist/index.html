@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f4f5f6"><title>净图 · 图片去水印</title><link rel="stylesheet" href="style.css"><script defer src="repair.js"></script><script defer src="app.js"></script></head>
+<body>
+<header><div class="bar"><div class="brand"><i aria-hidden="true"></i>净图</div><span class="lab">SCY Lab</span></div></header>
+<main><section class="intro"><div><h1>图片去水印</h1><p>框住水印，点击确认，即可下载处理后的图片。</p></div><div class="openers"><button id="demo">载入示例</button><button class="dark" id="open">打开图片</button></div></section>
+<input hidden type="file" id="file" accept="image/jpeg,image/png,image/webp">
+<div class="workspace">
+<section class="work"><div class="deskhead">
+  <div class="name-display" id="nameDisplay">
+    <strong id="filename">山谷样片.png</strong>
+    <button type="button" class="rename-link" id="rename" aria-controls="nameForm">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5 4 4M4 20l4.5-1L20 7.5a2.8 2.8 0 0 0-4-4L4.8 15z"/></svg>改名
+    </button>
+  </div>
+  <form id="nameForm" class="name-form" hidden>
+    <label class="name-field"><input id="nameInput" type="text" aria-label="图片名称" autocomplete="off" required><span>.png</span></label>
+    <button type="submit" class="name-save">保存</button>
+    <button type="button" id="cancelName">取消</button>
+  </form>
+  <span id="dims"></span>
+</div>
+<div class="stage" id="stage"><div id="sheet"><canvas id="view" aria-label="图片预览"></canvas><canvas id="original" aria-label="原始图片" hidden></canvas><div id="mask" aria-label="在图片上拖动选择区域"><div id="selection" hidden></div></div></div></div>
+<div class="deskfoot"><span id="state">原图</span><button id="compare" disabled aria-pressed="false">查看原图</button></div></section>
+<aside class="toolbox">
+  <h2>图片工具</h2>
+  <div class="tool-row">
+    <button class="round-tool" id="crop" aria-pressed="false">
+      <span class="tool-disc"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 4v17q0 2 2 2h17M4 9h17q2 0 2 2v17"/><path d="m18 14 8-8"/></svg></span>
+      <span>裁剪</span>
+    </button>
+    <button class="round-tool" id="select" aria-pressed="true">
+      <span class="tool-disc"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="7" width="18" height="18" rx="2" stroke-dasharray="3 3"/><path class="accent" d="M5 5h5v5H5zM22 22h5v5h-5z"/></svg></span>
+      <span>选择区域</span>
+    </button>
+    <button class="round-tool" id="export" disabled>
+      <span class="tool-disc"><svg viewBox="0 0 32 32" aria-hidden="true"><path class="download-arrow" d="M16 5v15m-6-6 6 6 6-6"/><path d="M6 21v4q0 2 2 2h16q2 0 2-2v-4"/></svg></span>
+      <span>下载 PNG</span>
+    </button>
+  </div>
+  <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+  <div class="confirm-slot"><button id="confirm" hidden>确认去水印</button></div>
+  <div class="note"><h3>本机处理</h3><p>可拖入或粘贴 JPG、PNG、WebP 图片。图片只在当前浏览器中处理。</p></div>
+</aside></div>
+</main></body></html>
